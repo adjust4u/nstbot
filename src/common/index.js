@@ -11,7 +11,7 @@ const whiteList = ["milf", "anal", "feet", "asian",
                     "tighs", "threesome", "toys", "public",
                     "boobs", "tit", "caption", "fetish",
                     "foot-fetish", "gangbang", "shaved", "piss",
-                    "titfuck"
+                    "titfuck", "hot", "nsfw", "stuff", "adult", "porno"
                 ]
 
 module.exports = {
