@@ -2,7 +2,7 @@ require("dotenv").config();
 const { Context, Markup } = require("telegraf");
 const request = require("../service/server.module");
 const { sortByName} = require("../module");
-const { whiteList } = require("../common");
+const { whiteListChannel, whiteListServer } = require("../common");
 class TelegramController {
   async checkConnection(ctx) {
     ctx.reply("pong !");
@@ -14,6 +14,7 @@ class TelegramController {
       const servers = await request.getServers();
       let buttons = [];
       servers.forEach((item) => {
+        if(!whiteListServer.includes(item.id)) return;
         buttons.push(Markup.button.callback(item.name, `serv ${item.id}`));
       });
       ctx.reply(
@@ -32,7 +33,7 @@ class TelegramController {
       channels.sort(sortByName);
       let buttons = [];
       channels.forEach((item, index) => {
-        if (!whiteList.includes(item.name.toLowerCase())) return;
+        if (!whiteListChannel.includes(item.name.toLowerCase())) return;
         buttons.push([
           { text: item.name, callback_data: `channel ${item.id}` },
         ]);
